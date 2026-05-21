@@ -1,5 +1,6 @@
-import type { Movie } from "../types/movie";
-import styles from "./MovieGrid.module.css";
+import type { Movie } from "../../types/movie";
+import MovieCard from "../MovieCard/MovieCard";
+import css from "./MovieGrid.module.css";
 
 interface MovieGridProps {
   movies: Movie[];
@@ -8,23 +9,9 @@ interface MovieGridProps {
 
 const MovieGrid = ({ movies, onSelect }: MovieGridProps) => {
   return (
-    <ul className={styles.grid}>
+    <ul className={css.grid}>
       {movies.map((movie) => (
-        <li key={movie.id} onClick={() => onSelect(movie)}>
-          <div className={styles.card}>
-            <img
-              className={styles.image}
-              src={
-                movie.poster_path
-                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                  : "https://www.logodesignlove.com/wp-content/uploads/2009/12/ghostbusters-logo-on-black.jpg"
-              }
-              alt={movie.title}
-              loading="lazy"
-            />
-            <h2 className={styles.title}>{movie.title}</h2>
-          </div>
-        </li>
+        <MovieCard onSelect={onSelect} movie={movie} key={movie.id} />
       ))}
     </ul>
   );

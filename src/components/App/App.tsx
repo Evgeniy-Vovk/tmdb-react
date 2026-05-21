@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchMovies } from "../services/movieService";
+import { fetchMovies } from "../../services/movieService";
 import MovieGrid from "../MovieGrid/MovieGrid";
 import { useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import Loader from "../Loader/Loader";
 import MovieModal from "../MovieModal/MovieModal";
-import type { Movie } from "../types/movie";
+import type { Movie } from "../../types/movie";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function App() {
   const [page, setPage] = useState(1);
-
-  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  const [selectedMovieId, setSelectedMovieId] = useState<number | null>(null);
 
   const {
     data: moviesData,
@@ -26,16 +26,20 @@ function App() {
   const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
+
   const modalOpen = (movie: Movie) => {
-    setSelectedMovie(movie);
+    setSelectedMovieId(movie.id);
   };
+
   const modalClose = () => {
-    setSelectedMovie(null);
+    setSelectedMovieId(null);
   };
+
   return (
     <>
       {isLoading && <Loader />}
-      {isError && <p>{error.message}</p>}
+      {isError && <ErrorMessage message={error.message} />}
+
       {moviesData && (
         <Pagination
           count={moviesData.totalPages}
@@ -51,9 +55,10 @@ function App() {
           }}
         />
       )}
+
       {moviesData && <MovieGrid movies={moviesData.results} onSelect={modalOpen} />}
 
-      {selectedMovie && <MovieModal movie={selectedMovie} onClose={modalClose} />}
+      <MovieModal movieId={selectedMovieId!} open={!!selectedMovieId} onClose={modalClose} />
     </>
   );
 }
