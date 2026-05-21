@@ -8,9 +8,12 @@ function ErrorMessage({ message }: ErrorMessageProps) {
   return (
     <div className={css.errorContainer}>
       <div className={css.errorCard}>
-        <p className={css.errorMessage}>😕 Oops! {message}</p>
+        <div className={css.errorIcon}>😕</div>
+        <h3 className={css.errorTitle}>Oops! Something went wrong</h3>
+        <p className={css.errorMessage}>{message}</p>
       </div>
     </div>
   );
 }
+
 export default ErrorMessage;

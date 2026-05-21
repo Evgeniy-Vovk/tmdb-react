@@ -7,6 +7,9 @@
     transform 0.3s ease,
     box-shadow 0.3s ease;
   background-color: #222;
+  max-width: 300px;
+  justify-self: center;
+  width: 100%;
 }
 
 .card:hover {
