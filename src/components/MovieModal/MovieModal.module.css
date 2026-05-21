@@ -21,8 +21,7 @@
 
 .image {
   width: 100%;
-  height: auto;
-  max-height: 40vh;
+  max-height: 45vh;
   object-fit: cover;
   display: block;
 }
@@ -54,9 +53,9 @@
   padding: 20px;
   background-color: #222;
   color: #fff;
-  overflow-y: auto;
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
+  overflow-y: auto;
 }
 
 .content::-webkit-scrollbar {
