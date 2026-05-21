@@ -8,21 +8,78 @@
   max-height: 90vh;
   background-color: white;
   border-radius: 24px;
-  overflow-y: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-.modalBoxStyle::-webkit-scrollbar {
+.imageWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.content {
+  padding: 20px;
+  background-color: #222;
+  color: #fff;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.content::-webkit-scrollbar {
   width: 8px;
 }
 
-.modalBoxStyle::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+.content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
 
-.modalBoxStyle::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
+.content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.content h2 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+}
+
+.content p {
+  margin: 8px 0;
+  font-size: 16px;
+  line-height: 1.5;
 }
