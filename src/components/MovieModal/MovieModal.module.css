@@ -3,32 +3,40 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 85%;
-  max-width: 1000px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
   background-color: white;
   border-radius: 24px;
+  overflow-y: auto;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
+  scrollbar-width: none; /* Firefox - ховає скрол */
+  -ms-overflow-style: none; /* IE/Edge - ховає скрол */
+}
+
+/* Chrome/Safari - ховає скрол */
+.modalBoxStyle::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
 }
 
 .image {
   width: 100%;
   height: auto;
-  max-height: 50vh;
-  object-fit: cover;
   display: block;
 }
 
 .closeButton {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.6);
+  position: sticky;
+  top: 10px;
+  left: 93%;
+  background: rgba(0, 0, 0, 0.7);
   border: none;
   border-radius: 50%;
   width: 36px;
   height: 36px;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   color: white;
   cursor: pointer;
@@ -36,6 +44,7 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+  margin-bottom: -36px;
 }
 
 .closeButton:hover {
@@ -43,48 +52,18 @@
 }
 
 .content {
-  padding: 24px;
+  padding: 20px;
   background-color: #222;
   color: #fff;
 }
 
 .content h2 {
   margin: 0 0 12px 0;
-  font-size: 26px;
+  font-size: 24px;
 }
 
 .content p {
-  margin: 12px 0;
+  margin: 10px 0;
   font-size: 16px;
   line-height: 1.5;
-}
-
-/* Для планшетів */
-@media (max-width: 768px) {
-  .modalBoxStyle {
-    width: 90%;
-  }
-
-  .content h2 {
-    font-size: 22px;
-  }
-
-  .content p {
-    font-size: 15px;
-  }
-}
-
-/* Для телефонів */
-@media (max-width: 480px) {
-  .modalBoxStyle {
-    width: 95%;
-  }
-
-  .content h2 {
-    font-size: 18px;
-  }
-
-  .content p {
-    font-size: 14px;
-  }
 }
