@@ -76,7 +76,6 @@ function MovieModal({ movieId, open, onClose }: MovieModalProps) {
                 {movie.overview}
               </Typography>
 
-              {/* Нова інформація */}
               <Typography variant="body2" color="text.secondary">
                 <strong>Release:</strong> {movie.release_date}
               </Typography>
